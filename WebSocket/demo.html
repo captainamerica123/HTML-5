@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket Chatting </title>
+    </head>
+    <body style="font-size: 30px;">
+        <fieldset style="width: 25%;">
+            <legend>Chatting API</legend>
+            <label>Enter Your Message</label><br>
+            <input type="text" id="txt_msg" size="30px"><br>
+            <button onclick="mainFun()">Send</button>
+        </fieldset>
+        <hr>
+        <fieldset id="my_field" style="width: 25%;">
+            <legend>Output</legend>
+        </fieldset>
+
+    </body>
+
+
+<script>
+    function mainFun()
+    {
+        let socket = new WebSocket("ws://localhost:8081");
+
+        socket.onopen = function()
+        {
+            socket.send(document.getElementById("txt_msg").value);
+
+        }
+
+        socket.onmessage = function(msg)
+        {
+            document.getElementById("my_field").innerHTML += msg.data+"<br>";
+        }
+
+        socket.onerror = function(err)
+        {
+            console.log(err);
+        }
+    }
+    
+</script>
+</html>

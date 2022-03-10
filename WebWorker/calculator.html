@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebWorker API</title>
+    </head>
+    <body>
+        <label>Num:1</label>
+        <input type="text" id="Num1">
+        <br><br>
+        <label>Num:2</label>
+        <input type="text" id="Num2">
+        <br><br>
+        <button onclick="myFun()">Calculate</button>
+        <br><br>
+        <label for=""></label>
+
+    </body>
+    <script>
+        function myFun(){
+            if(window.Worker){
+            let addThread = new Worker("add.js");
+            let subThread = new Worker("sub.js");
+            let mulThread = new Worker("mul.js");
+            let divthread= new Worker("div.js"); 
+            addThread.postMessage({num1:parseInt(document.getElementById("Num1").value),num2:parseInt(document.getElementById("Num2").value)});
+            addThread.onmessage = function(event){
+                subThread.postMessage({num1:event.data,num2:parseInt(document.getElementById("Num2").value)});
+                subThread.onmessage = function(event){
+                    mulThread.postMessage({num1:event.data,num2:parseInt(document.getElementById("Num2").value)});
+                    mulThread.onmessage = function(event){
+                       divthread.postMessage({num1:event.data,num2:parseInt(document.getElementById("Num2").value)});
+                       divthread.onmessage=function(event) {
+                       console.log(event.data);
+                           
+                       };
+                    }
+                } 
+            }
+        }else{
+            console.log("browser not supporting web worker api");
+        }
+        }
+        
+    </script>
+</html>
+
+
+

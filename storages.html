@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Storages</title>
+    </head>
+    <body>
+        <fieldset style="width: 25%">
+            <legend>Login</legend>
+            <label>UserName</label>
+            <input type="text" id="uname">
+            <br><br>
+            <label>Password</label>
+            <input type="password" id="password">
+            <br><br>
+            <button onclick="myFun()">Login</button>
+        </fieldset>
+    </body>
+
+<script>
+    function myFun(){
+        let obj = {
+            "uname":document.getElementById("uname").value,
+            "password":document.getElementById("password").value
+        }
+        //storing the data
+        window.localStorage.setItem("login_details",JSON.stringify(obj));
+       // window.sessionStorage.setItem("login_details",JSON.stringify(obj));
+
+
+
+        //read the data
+        console.log( window.localStorage.getItem("login_details") );
+       // console.log( window.sessionStorage.getItem("login_details") );
+
+
+        //remove the data 
+        //window.localStorage.removeItem("login_details");
+        //window.sessionStorage.removeItem("login_details");
+        
+    }
+</script>
+</html>

@@ -1,0 +1,86 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Navigation_bar</title>
+        <style>
+            section{
+                display: grid;
+                grid-template-areas: 
+                            "header"
+                            "main"
+                            "footer";
+                height: 100vh;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 8fr 1fr;
+            }
+            header{
+                grid-area: "header";
+                background-color: darkcyan;
+                color: rgb(57, 255, 8);
+                text-align: center;
+                font-size: 30px;
+                border: 2px solid greenyellow;
+                border-radius: 20px;
+                text-shadow: 2px 2px rgb(235, 22, 22);
+                margin-top: 10px;
+            }
+            main{
+                grid-area: "main";
+                margin-top: 20px;
+                text-align: center;
+                background-color: rgb(191, 208, 216);
+            }
+            footer{
+                grid-area: "footer";
+                background-color: darkcyan;
+                color: white;
+                text-align: center;
+                border: 2px solid greenyellow;
+                border-radius: 20px;
+                font-size: 20px;
+                margin-top: 10px;
+
+            }
+            a{
+                text-decoration: none;
+                font-size: 15px;
+                background-color: rgb(182, 79, 79);
+                color: azure;
+                padding: 10px;
+                border: 2px solid yellow;
+                border-radius: 20px;
+                box-shadow: 0px 0px 30px yellow;
+            }
+            a:nth-child(1){
+                background: green;
+            }
+            a:hover{
+                background: green;
+            }
+            
+        </style>
+    </head>
+    <body>
+       <section>
+        <header>
+            Indian Institute of Science Edgucation and Research,pune.
+        </header>
+        <main>
+            <nav>
+                <a href="#">Home</a> |
+                <a href="#">Portfailo</a> |
+                <a href="#">Contents</a> |
+                <a href="#">About</a> |
+                <a href="#">Help</a> |
+                <a href="#">Logout</a>
+            </nav>
+        
+        </main>
+        
+        <footer>
+            copyright to @IISERpune.in
+        </footer>
+       
+    </section>
+    </body>
+</html>
